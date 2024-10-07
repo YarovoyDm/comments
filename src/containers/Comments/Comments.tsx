@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { AxiosResponse } from "axios";
 import { fetchComments } from "api/fetchComments";
-import Comment from "components/Comment/Comment";
+import { Comment } from "components";
 import { useAppDispatch, useAppSelector } from "store";
 import { updateComments } from "store/comments/slice";
 import { selectComments } from "store/comments/selectors";

@@ -1,6 +1,6 @@
 import React from "react";
-import AddComment from "components/AddComment/AddComment";
-import Comments from "./containers/Comments/Comments";
+import { AddComment } from "components";
+import { Comments } from "./containers";
 
 import styles from "./App.module.scss";
 

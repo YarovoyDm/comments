@@ -2,11 +2,23 @@ import React from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import * as _ from "lodash";
-import TextArea from "components/ui/TextArea/TextArea";
+import { TextArea } from "components/ui";
 import { useAppDispatch } from "store/index";
 import { addComment } from "store/comments/slice";
 
 import styles from "./AddComment.module.scss";
+import {
+    COMMENT,
+    COMMENT_PLACEHOLDER,
+    COMMENT_TEXTAREA_DEFAULT_ROWS,
+    FULLNAME,
+    FULLNAME_PLACEHOLDER,
+    ID_PREFIX,
+    NICKNAME,
+    NICKNAME_PLACEHOLDER,
+    POST_ID_PREFIX,
+    USER_ID_PREFIX,
+} from "constants/addComment";
 
 const AddCommentSchema = Yup.object().shape({
     fullName: Yup.string()
@@ -39,13 +51,13 @@ const AddComment = () => {
                     dispatch(
                         addComment({
                             body: values.comment,
-                            id: _.uniqueId("id_"),
+                            id: _.uniqueId(ID_PREFIX),
                             likes: 0,
-                            postId: _.uniqueId("post_id_"),
+                            postId: _.uniqueId(POST_ID_PREFIX),
                             user: {
                                 fullName: values.fullName,
                                 username: values.nickName,
-                                id: _.uniqueId("user_id_"),
+                                id: _.uniqueId(USER_ID_PREFIX),
                             },
                         }),
                     );
@@ -57,8 +69,8 @@ const AddComment = () => {
                         <div className={styles.authorInfo}>
                             <div className={styles.inputWrapper}>
                                 <Field
-                                    name="fullName"
-                                    placeholder="Full name"
+                                    name={FULLNAME}
+                                    placeholder={FULLNAME_PLACEHOLDER}
                                     className={styles.input}
                                 />
                                 {errors.fullName && touched.fullName ? (
@@ -67,11 +79,10 @@ const AddComment = () => {
                                     </div>
                                 ) : null}
                             </div>
-
                             <div className={styles.inputWrapper}>
                                 <Field
-                                    name="nickName"
-                                    placeholder="Nickname"
+                                    name={NICKNAME}
+                                    placeholder={NICKNAME_PLACEHOLDER}
                                     className={styles.input}
                                 />
                                 {errors.nickName && touched.nickName ? (
@@ -83,13 +94,12 @@ const AddComment = () => {
                         </div>
                         <div className={styles.textAreaWrapper}>
                             <TextArea
-                                name="comment"
-                                rows="6"
-                                placeholder="Your comment..."
+                                name={COMMENT}
+                                rows={COMMENT_TEXTAREA_DEFAULT_ROWS}
+                                placeholder={COMMENT_PLACEHOLDER}
                                 className={styles.input}
                             />
                         </div>
-
                         <button type="submit" className={styles.submitButton}>
                             Submit
                         </button>
