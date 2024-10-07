@@ -2,13 +2,17 @@ import { useMemo } from "react";
 import API from "./axios";
 import "./App.css";
 import { API_COMMENTS_ENDPOINT } from "./constants/api";
+import Comments from "./containers/Comments/Comments";
+import { Box, Stack } from "@mui/joy";
 
 function App() {
-    useMemo(() => {
-        API.get(API_COMMENTS_ENDPOINT).then(res => console.log("res", res));
-    }, []);
+    useMemo(() => {}, []);
 
-    return <div className="App">1</div>;
+    return (
+        <div>
+            <Comments />
+        </div>
+    );
 }
 
 export default App;
