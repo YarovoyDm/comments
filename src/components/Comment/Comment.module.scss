@@ -1,12 +1,14 @@
+@import "../../scss/mixins.scss";
+@import "../../scss/_variables.scss";
+
 .commentWrapper {
     display: flex;
     flex-direction: column;
     position: relative;
     width: 300px;
-    min-height: 80px;
     padding: 20px;
     border-radius: 10px;
-    background: #e3e3e3;
+    background: $Aria;
     &:hover {
         .removeButton {
             display: block;
@@ -21,7 +23,7 @@
         height: 25px;
         &:hover {
             cursor: pointer;
-            background: #9b9b9b;
+            background: $Hydrargyrum;
         }
     }
     &:not(:last-child) {
@@ -30,16 +32,17 @@
     .author {
         display: flex;
         align-items: center;
+        color: $Hydrargyrum;
         height: 30px;
         margin-bottom: 20px;
-        border-bottom: solid 1px black;
+        border-bottom: solid 1px $Hydrargyrum;
         .fullName {
             font-size: 20px;
             margin-right: 15px;
             height: 100%;
         }
         .userName {
-            color: #2ebfbf;
+            color: $Maximum_blue_green;
             height: 30px;
             line-height: 30px;
         }
@@ -52,9 +55,7 @@
         .likeIcon {
             width: 18px;
             height: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            @include flex-center;
             margin-left: 5px;
         }
     }

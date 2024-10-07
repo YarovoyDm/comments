@@ -1,15 +1,11 @@
-import { useMemo } from "react";
-import API from "./axios";
-import "./App.css";
-import { API_COMMENTS_ENDPOINT } from "./constants/api";
+import React from "react";
 import Comments from "./containers/Comments/Comments";
-import { Box, Stack } from "@mui/joy";
+
+import styles from "./App.module.scss";
 
 function App() {
-    useMemo(() => {}, []);
-
     return (
-        <div>
+        <div className={styles.comments}>
             <Comments />
         </div>
     );
