@@ -11,7 +11,6 @@ interface IProps {
 }
 
 const TextArea = (props: IProps) => {
-    console.log("props", props);
     const [field, meta] = useField(props);
 
     return (
