@@ -1,9 +1,10 @@
 import styles from "./Comment.module.scss";
-import { useAppDispatch } from "../../store";
-import { removeComment } from "../../store/comments/slice";
+import React from "react";
+import { useAppDispatch } from "store";
+import { removeComment } from "store/comments/slice";
 import ClearIcon from "@mui/icons-material/Clear";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import { IComment } from "../../types/comments";
+import { IComment } from "types/comments";
 
 const Comment = (props: { comment: IComment }) => {
     const { postId, user, body, likes } = props.comment;

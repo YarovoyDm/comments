@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { COMMENTS_SLICE } from "../../constants/comments";
-import { IComments } from "../../types/comments";
+import { COMMENTS_SLICE } from "constants/comments";
+import { IComments } from "types/comments";
 
 const initialCommentsState = {
     comments: [],

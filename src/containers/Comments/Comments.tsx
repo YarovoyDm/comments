@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { fetchComments } from "../../api/fetchComments";
-import { AxiosResponse } from "axios";
-import { useAppDispatch, useAppSelector } from "../../store";
-import { updateComments } from "../../store/comments/slice";
-import { selectComments } from "../../store/comments/selectors";
-import { IComment } from "../../types/comments";
-import Comment from "../../components/Comment/Comment";
+import { fetchComments } from "api/fetchComments";
+import { useAppDispatch, useAppSelector } from "store";
+import { updateComments } from "store/comments/slice";
+import { selectComments } from "store/comments/selectors";
+import { IComment } from "types/comments";
+import Comment from "components/Comment/Comment";
 
 import styles from "./Comments.module.scss";
+import { AxiosResponse } from "axios";
 
 const Comments = () => {
     const [comments, setComments] = useState<Array<IComment> | null>(null);
