@@ -1,14 +1,20 @@
 import React from "react";
+import AddComment from "components/AddComment/AddComment";
 import Comments from "./containers/Comments/Comments";
 
 import styles from "./App.module.scss";
 
-function App() {
+const App = () => {
     return (
         <div className={styles.comments}>
-            <Comments />
+            <div className={styles.addCommentBlock}>
+                <AddComment />
+            </div>
+            <div className={styles.commentsBlock}>
+                <Comments />
+            </div>
         </div>
     );
-}
+};
 
 export default App;

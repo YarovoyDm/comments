@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { COMMENTS_SLICE } from "constants/comments";
-import { IComments } from "types/comments";
+import { IComment, IComments } from "types/comments";
 
 const initialCommentsState = {
     comments: [],
@@ -13,13 +13,20 @@ const commentsSlice = createSlice({
         updateComments(state: IComments, action: PayloadAction<IComments>) {
             state.comments = action.payload.comments;
         },
-        removeComment(state: IComments, action: PayloadAction<number>) {
+        removeComment(
+            state: IComments,
+            action: PayloadAction<number | string>,
+        ) {
             state.comments = state.comments.filter(
                 item => item.postId !== action.payload,
             );
+        },
+        addComment(state: IComments, action: PayloadAction<IComment>) {
+            state.comments.push(action.payload);
         },
     },
 });
 
 export default commentsSlice.reducer;
-export const { updateComments, removeComment } = commentsSlice.actions;
+export const { updateComments, removeComment, addComment } =
+    commentsSlice.actions;

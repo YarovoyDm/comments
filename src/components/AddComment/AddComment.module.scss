@@ -1,0 +1,77 @@
+@import "scss/_variables.scss";
+
+.AddComment {
+    width: 500px;
+    height: 220px;
+    background: white;
+    position: fixed;
+    bottom: 0;
+    left: 50px;
+    top: 50%;
+    transform: translate(0, -50%);
+    border-radius: $System_border_radius;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    .addCommentForm {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        width: 100%;
+        .authorInfo {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            .inputWrapper {
+                position: relative;
+                width: 48%;
+            }
+        }
+        .error {
+            position: absolute;
+            color: $Coral_trails;
+            font-size: 12px;
+            bottom: -15px;
+            left: 0;
+        }
+        .input {
+            width: calc(100% - 10px);
+            height: 30px;
+            border-radius: $System_border_radius;
+            border: solid 1px $Hydrargyrum;
+            padding-left: 5px;
+            &:focus {
+                outline: none;
+            }
+            position: relative;
+        }
+        .textAreaWrapper {
+            position: relative;
+            width: 100%;
+            margin-bottom: 10px;
+            textarea {
+                min-height: 100px;
+                resize: none;
+            }
+        }
+        .submitButton {
+            width: 100%;
+            background: white;
+            height: 35px;
+            border-radius: $System_border_radius;
+            cursor: pointer;
+            border: solid 1px $Art_house_pink;
+            &:hover {
+                background: $Art_house_pink;
+                color: white;
+            }
+            &:active {
+                background: white;
+                color: $Art_house_pink;
+            }
+        }
+    }
+}

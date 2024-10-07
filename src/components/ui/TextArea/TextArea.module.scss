@@ -1,0 +1,9 @@
+@import "scss/_variables.scss";
+
+.error {
+    position: absolute;
+    color: $Coral_trails;
+    font-size: 12px;
+    bottom: -15px;
+    left: 0;
+}

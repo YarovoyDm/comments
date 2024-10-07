@@ -1,6 +1,17 @@
+@import "scss/_variables.scss";
+@import "scss/mixins.scss";
+
 .comments {
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background: $White_smoke;
+    @include flex-center;
+    .addCommentBlock {
+        width: 35%;
+        position: relative;
+    }
+
+    .commentsBlock {
+        width: 65%;
+        @include flex-center;
+    }
 }

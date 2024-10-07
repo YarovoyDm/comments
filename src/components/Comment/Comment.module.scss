@@ -5,10 +5,10 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    width: 300px;
+    width: 600px;
     padding: 20px;
-    border-radius: 10px;
-    background: $Aria;
+    border-radius: $System_border_radius;
+    background: white;
     &:hover {
         .removeButton {
             display: block;
@@ -18,12 +18,12 @@
         position: absolute;
         display: none;
         top: 10px;
-        right: 10px;
+        right: 20px;
         width: 25px;
         height: 25px;
         &:hover {
             cursor: pointer;
-            background: $Hydrargyrum;
+            background: $White_smoke;
         }
     }
     &:not(:last-child) {
@@ -33,30 +33,48 @@
         display: flex;
         align-items: center;
         color: $Hydrargyrum;
-        height: 30px;
-        margin-bottom: 20px;
+        height: 30%;
         border-bottom: solid 1px $Hydrargyrum;
-        .fullName {
-            font-size: 20px;
-            margin-right: 15px;
-            height: 100%;
+        padding-bottom: 5px;
+        .authorAvatar {
+            height: 43px;
+            width: 43px;
+            border-radius: 43px;
+            background: $White_smoke;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $Art_house_pink;
         }
-        .userName {
-            color: $Maximum_blue_green;
-            height: 30px;
-            line-height: 30px;
+        .authorInfo {
+            .authorName {
+                font-size: 16px;
+                margin-right: 15px;
+                height: 100%;
+            }
+            .authorNickname {
+                color: $Art_house_pink;
+                font-size: 14px;
+                height: 30px;
+                line-height: 30px;
+            }
         }
     }
     .main {
-        margin-bottom: 20px;
-    }
-    .likesWrapper {
+        height: 70%;
+        min-height: 50px;
         display: flex;
-        .likeIcon {
-            width: 18px;
-            height: 20px;
-            @include flex-center;
-            margin-left: 5px;
+        align-items: center;
+        justify-content: space-between;
+        .likesWrapper {
+            display: flex;
+            .likeIcon {
+                width: 18px;
+                height: 20px;
+                @include flex-center;
+                margin-left: 5px;
+            }
         }
     }
 }
