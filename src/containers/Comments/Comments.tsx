@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { AxiosResponse } from "axios";
 import { fetchComments } from "api/fetchComments";
-import { Comment } from "components";
+import { Comment, ScrollHandler } from "components";
 import { useAppDispatch, useAppSelector } from "store";
 import { updateComments } from "store/comments/slice";
 import { selectComments } from "store/comments/selectors";
@@ -26,6 +26,7 @@ const Comments = () => {
 
     return (
         <div className={styles.commentsWrapper}>
+            <ScrollHandler isDataLoaded={Boolean(allComments.length)} />
             {comments?.map((comment: IComment) => {
                 return <Comment key={comment.postId} comment={comment} />;
             })}

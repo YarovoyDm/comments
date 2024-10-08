@@ -8,6 +8,9 @@ interface IProps {
     name: string;
     placeholder: string;
     rows: string;
+    onChange: (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    ) => void;
 }
 
 const TextArea = (props: IProps) => {

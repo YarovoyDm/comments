@@ -38,14 +38,16 @@ const AddCommentSchema = Yup.object().shape({
 const AddComment = () => {
     const dispatch = useAppDispatch();
 
+    const initialValues = {
+        fullName: localStorage.getItem(FULLNAME) ?? "",
+        nickName: localStorage.getItem(NICKNAME) ?? "",
+        comment: localStorage.getItem(COMMENT) ?? "",
+    };
+
     return (
         <div className={styles.AddComment}>
             <Formik
-                initialValues={{
-                    fullName: "",
-                    nickName: "",
-                    comment: "",
-                }}
+                initialValues={initialValues}
                 validationSchema={AddCommentSchema}
                 onSubmit={(values, { resetForm }) => {
                     dispatch(
@@ -62,49 +64,73 @@ const AddComment = () => {
                         }),
                     );
                     resetForm();
+                    initialValues.comment = "";
+                    initialValues.nickName = "";
+                    initialValues.fullName = "";
+                    localStorage.clear();
                 }}
             >
-                {({ errors, touched }) => (
-                    <Form className={styles.addCommentForm}>
-                        <div className={styles.authorInfo}>
-                            <div className={styles.inputWrapper}>
-                                <Field
-                                    name={FULLNAME}
-                                    placeholder={FULLNAME_PLACEHOLDER}
-                                    className={styles.input}
-                                />
-                                {errors.fullName && touched.fullName ? (
-                                    <div className={styles.error}>
-                                        {errors.fullName}
-                                    </div>
-                                ) : null}
+                {({ errors, touched, handleChange }) => {
+                    const handleFieldChange = (
+                        e: React.ChangeEvent<
+                            HTMLInputElement | HTMLTextAreaElement
+                        >,
+                    ) => {
+                        handleChange(e);
+
+                        const { name, value } = e.target;
+
+                        localStorage.setItem(name, value);
+                    };
+
+                    return (
+                        <Form className={styles.addCommentForm}>
+                            <div className={styles.authorInfo}>
+                                <div className={styles.inputWrapper}>
+                                    <Field
+                                        name={FULLNAME}
+                                        placeholder={FULLNAME_PLACEHOLDER}
+                                        className={styles.input}
+                                        onChange={handleFieldChange}
+                                    />
+                                    {errors.fullName && touched.fullName ? (
+                                        <div className={styles.error}>
+                                            {errors.fullName}
+                                        </div>
+                                    ) : null}
+                                </div>
+                                <div className={styles.inputWrapper}>
+                                    <Field
+                                        name={NICKNAME}
+                                        placeholder={NICKNAME_PLACEHOLDER}
+                                        className={styles.input}
+                                        onChange={handleFieldChange}
+                                    />
+                                    {errors.nickName && touched.nickName ? (
+                                        <div className={styles.error}>
+                                            {errors.nickName}
+                                        </div>
+                                    ) : null}
+                                </div>
                             </div>
-                            <div className={styles.inputWrapper}>
-                                <Field
-                                    name={NICKNAME}
-                                    placeholder={NICKNAME_PLACEHOLDER}
+                            <div className={styles.textAreaWrapper}>
+                                <TextArea
+                                    name={COMMENT}
+                                    rows={COMMENT_TEXTAREA_DEFAULT_ROWS}
+                                    placeholder={COMMENT_PLACEHOLDER}
                                     className={styles.input}
+                                    onChange={handleFieldChange}
                                 />
-                                {errors.nickName && touched.nickName ? (
-                                    <div className={styles.error}>
-                                        {errors.nickName}
-                                    </div>
-                                ) : null}
                             </div>
-                        </div>
-                        <div className={styles.textAreaWrapper}>
-                            <TextArea
-                                name={COMMENT}
-                                rows={COMMENT_TEXTAREA_DEFAULT_ROWS}
-                                placeholder={COMMENT_PLACEHOLDER}
-                                className={styles.input}
-                            />
-                        </div>
-                        <button type="submit" className={styles.submitButton}>
-                            Submit
-                        </button>
-                    </Form>
-                )}
+                            <button
+                                type="submit"
+                                className={styles.submitButton}
+                            >
+                                Submit
+                            </button>
+                        </Form>
+                    );
+                }}
             </Formik>
         </div>
     );
