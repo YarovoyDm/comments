@@ -3,10 +3,6 @@ import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import * as _ from "lodash";
 import { TextArea } from "components/ui";
-import { useAppDispatch } from "store/index";
-import { addComment } from "store/comments/slice";
-
-import styles from "./AddComment.module.scss";
 import {
     COMMENT,
     COMMENT_PLACEHOLDER,
@@ -19,6 +15,10 @@ import {
     POST_ID_PREFIX,
     USER_ID_PREFIX,
 } from "constants/addComment";
+import { useAppDispatch } from "store/index";
+import { addComment } from "store/comments/slice";
+
+import styles from "./AddComment.module.scss";
 
 const AddCommentSchema = Yup.object().shape({
     fullName: Yup.string()
