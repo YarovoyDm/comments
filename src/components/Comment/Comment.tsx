@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import ClearIcon from "@mui/icons-material/Clear";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { useAppDispatch } from "store";
@@ -11,20 +11,21 @@ const Comment = (props: { comment: IComment }) => {
     const { postId, user, body, likes } = props.comment;
     const dispatch = useAppDispatch();
 
-    const removeCommentById = (id: number | string) => {
-        dispatch(removeComment(id));
-    };
+    const removeCommentById = useCallback(
+        (id: number | string) => () => {
+            dispatch(removeComment(id));
+        },
+        [dispatch],
+    );
 
     return (
         <div className={styles.commentWrapper}>
             <ClearIcon
                 className={styles.removeButton}
-                onClick={() => removeCommentById(postId)}
+                onClick={removeCommentById(postId)}
             />
             <div className={styles.author}>
-                <div className={styles.authorAvatar}>
-                    {Array.from(user.fullName)[0]}
-                </div>
+                <div className={styles.authorAvatar}>{user.fullName[0]}</div>
                 <div className={styles.authorInfo}>
                     <div className={styles.authorName}>{user.fullName}</div>
                     <div className={styles.authorNickname}>

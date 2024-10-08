@@ -93,11 +93,11 @@ const AddComment = () => {
                                         className={styles.input}
                                         onChange={handleFieldChange}
                                     />
-                                    {errors.fullName && touched.fullName ? (
+                                    {errors.fullName && touched.fullName && (
                                         <div className={styles.error}>
                                             {errors.fullName}
                                         </div>
-                                    ) : null}
+                                    )}
                                 </div>
                                 <div className={styles.inputWrapper}>
                                     <Field
@@ -106,11 +106,11 @@ const AddComment = () => {
                                         className={styles.input}
                                         onChange={handleFieldChange}
                                     />
-                                    {errors.nickName && touched.nickName ? (
+                                    {errors.nickName && touched.nickName && (
                                         <div className={styles.error}>
                                             {errors.nickName}
                                         </div>
-                                    ) : null}
+                                    )}
                                 </div>
                             </div>
                             <div className={styles.textAreaWrapper}>

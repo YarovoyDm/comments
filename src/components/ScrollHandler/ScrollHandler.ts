@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 import { SCROLL_POSITION_KEY } from "constants/localStorage";
 
 interface ScrollHandlerProps {
@@ -12,7 +12,7 @@ const ScrollHandler: React.FC<ScrollHandlerProps> = ({ isDataLoaded }) => {
         localStorage.setItem(SCROLL_POSITION_KEY, String(scrollPosition));
     };
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (isDataLoaded) {
             const savedPosition = localStorage.getItem(SCROLL_POSITION_KEY);
 

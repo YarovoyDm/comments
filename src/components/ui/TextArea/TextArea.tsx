@@ -19,9 +19,9 @@ const TextArea = (props: IProps) => {
     return (
         <>
             <textarea {...field} {...props} rows={Number(props.rows)} />
-            {meta.touched && meta.error ? (
+            {meta.touched && meta.error && (
                 <div className={styles.error}>{meta.error}</div>
-            ) : null}
+            )}
         </>
     );
 };
